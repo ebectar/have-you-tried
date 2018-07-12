@@ -1,21 +1,48 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import './App.css'
+import About from './components/About'
+import FriendList from './components/FriendList'
+import FriendContainer from "./components/FriendContainer";
+import RestaurantList from './components/RestaurantList'
+import RestaurantContainer from "./components/RestaurantContainer";
+import CommentForm from './components/CommentForm'
+import Navbar from './components/Navbar'
+import Home from './components/Home'
+import {BrowserRouter, Switch, Route} from 'react-router-dom'
+import {Grid} from 'semantic-ui-react'
 
-class App extends Component {
+class App extends React.Component {
+  state = {
+    'submitted': false,
+    'login': false
+  }
+
+  handleSubmit = (event) => {
+    event.preventDefault()
+    this.setState({'submitted': true})
+  }
+
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+      <div className='App'>
+        <BrowserRouter>
+          <Grid className='main'>
+            <Navbar/>
+            <Grid.Column stretched width={12}>
+              <Switch/>
+              <Route path="/home" component={() => <Home/>}/>
+              <Route path="/about" component={() => <About/>}/>
+              <Route path="/recommendation" component={() => <CommentForm/>}/>
+              <Route path="/friends" component={() => <FriendList/>}/>
+              <Route path="/friends/:friendId" component={() => <FriendContainer/>}/>
+              <Route path="/restaurants" component={() => <RestaurantList/>}/>
+              <Route path="/restaurants/:restaurantId" component={() => <RestaurantContainer/>}/>
+            </Grid.Column>
+          </Grid>
+        </BrowserRouter>
       </div>
-    );
+    )
   }
 }
 
-export default App;
+export default App
