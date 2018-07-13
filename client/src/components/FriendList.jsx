@@ -11,11 +11,17 @@ class FriendList extends Component {
   }
 
   componentDidMount() {
-    fetch(apiUrl)
+    fetch('https://have-you-tried.herokuapp.com/friends')
       .then(response => response.json())
       .then(friends => {
         return this.setState({friends: friends})
       })
+  }
+
+  handleFormChange = event => {
+    this.setState({
+      name: event.target.value
+    })
   }
 
   handleSubmit = event => {
@@ -39,15 +45,13 @@ class FriendList extends Component {
       })
   }
   
-  deleteFriend(friend){
-    console.log('clicked')
-    console.log(friend)
-    // event.preventDefault()
-    // const url = `https://have-you-tried.herokuapp.com/friends${this.state.id}`
-    // fetch(url, {
-    //   method: 'DELETE'
-    // })
-}
+  deleteFriend(id){
+    console.log(id)
+    const url = `https://have-you-tried.herokuapp.com/friends/${id}`
+    fetch(url, {
+      method: 'DELETE'
+    })
+
 
 editFriend = (event) => {
   event.preventDefault()
@@ -74,7 +78,7 @@ editFriend = (event) => {
       <React.Fragment>
         <div id='friend-page'>
           <Friend friendData={this.state.friends} deleteFriend={this.deleteFriend}/>
-          <AddFriend handleSubmit={this.handleSubmit}/>
+          <AddFriend handleSubmit={this.handleSubmit} handleFormChange={this.handleFormChange} name={this.state.name}/>
           <EditFriend editFriend={this.editFriend}/>
         </div>
       </React.Fragment>

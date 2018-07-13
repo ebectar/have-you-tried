@@ -6,19 +6,13 @@ export default class AddFriend extends React.Component {
 
   }
 
-  handleFormChange = event => {
-    this.setState({
-      [event.target.name]: event.target.value
-    })
-  }
-
 render(){
 return (
   <Segment id='form'>
     <Form>
-        <Form.Input fluid placeholder='First name' 
-        value={this.state.name}
-        onChange={this.handleFormChange}/>
+        <Form.Input fluid placeholder='First name'
+        ref={this.props.name}
+        onChange={this.props.handleFormChange}/>
       <Button type='submit' onClick={this.props.handleSubmit}>Add New Friend</Button>
     </Form>
   </Segment>
