@@ -51,7 +51,7 @@ class FriendList extends Component {
     fetch(url, {
       method: 'DELETE'
     })
-
+  }
 
 editFriend = (event) => {
   event.preventDefault()
