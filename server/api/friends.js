@@ -9,11 +9,6 @@ function isValidId(request, response, next) {
 		next(new Error('Invalid ID'))
 }
 
-function validFriend(submission) {
-	const friendName = typeof submission.name == 'string' && submission.name.trim() != ''
-	return friendName
-}
-
 router.get('/', (request, response) => {
 	return queries.list().then(friends => response.json(friends))
 })
@@ -32,16 +27,12 @@ router.get('/:id', isValidId, (request, response) => {
 })
 
 router.post('/', (request, response, next) => {
-	validFriend(request.body) ?
-		queries.create(request.body).then(friend => response.json(friend[0])) :
-		next(new Error('Invalid friend format!'))
+		return queries.create(request.body).then(friend => response.json(friend[0]))
 })
 
 router.put('/:id', isValidId, (request, response, next) => {
-	validFriend(request.body) ?
-		queries.update(request.params.id, request.body)
-		.then(friend => response.json(friend[0])) :
-		next(new Error('Invalid friend format!'))
+	queries.update(request.params.id, request.body)
+		.then(friend => response.json(friend[0]))
 })
 
 router.delete('/:id', isValidId, (request, response) => {

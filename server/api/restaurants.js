@@ -30,7 +30,6 @@ router.post('/', (request, response, next) => {
 })
 
 router.put('/:id', isValidId, (request, response, next) => {
-	validRestaurant(request.body)
 	return queries.update(request.params.id, request.body)
 		.then(restaurant => response.json(restaurant[0]))
 })
