@@ -21,7 +21,6 @@ export default class FriendContainer extends Component {
       })
   }
   filterFriendById = (friendData) => {
-    console.log(friendData)
     let filteredFriend = friendData.filter(friend => friend.friend_id == id)
     this.setState({
       friend: filteredFriend
@@ -31,7 +30,7 @@ export default class FriendContainer extends Component {
 
   render() {
     return (  
-      <div>
+      <div id='friend-page'>
         {this.state.friend.map((friend, i) => {
         console.log(friend)
         return (

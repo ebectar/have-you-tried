@@ -1,10 +1,9 @@
 import React from 'react'
 import './App.css'
-import About from './components/About'
 import FriendList from './components/FriendList'
-import FriendContainer from "./components/FriendContainer";
+import FriendContainer from './components/FriendContainer';
 import RestaurantList from './components/RestaurantList'
-import RestaurantContainer from "./components/RestaurantContainer";
+import RestaurantContainer from './components/RestaurantContainer';
 import CommentForm from './components/CommentForm'
 import Navbar from './components/Navbar'
 import Home from './components/Home'
@@ -30,13 +29,12 @@ class App extends React.Component {
             <Navbar/>
             <Grid.Column stretched width={12}>
               <Switch/>
-              <Route path="/home" component={() => <Home/>}/>
-              <Route path="/about" component={() => <About/>}/>
-              <Route path="/recommendation" component={() => <CommentForm/>}/>
-              <Route path="/friends" component={() => <FriendList/>}/>
-              <Route path="/friends/:friendId" component={() => <FriendContainer/>}/>
-              <Route path="/restaurants" component={() => <RestaurantList/>}/>
-              <Route path="/restaurants/:restaurantId" component={() => <RestaurantContainer/>}/>
+              <Route path='/home' component={() => <Home/>}/>
+              <Route path='/recommendation' component={() => <CommentForm/>}/>
+              <Route path='/friends' component={() => <FriendList/>}/>
+              <Route path='/friends/:friendId' component={() => <FriendContainer/>}/>
+              <Route path='/restaurants' component={() => <RestaurantList/>}/>
+              <Route path='/restaurants/:restaurantId' component={() => <RestaurantContainer/>}/>
             </Grid.Column>
           </Grid>
         </BrowserRouter>

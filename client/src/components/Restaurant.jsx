@@ -1,44 +1,21 @@
 import React from 'react'
 import {Card, Header, Icon} from 'semantic-ui-react'
 import {NavLink} from 'react-router-dom'
-// import {Geocode} from 'react-geocode'
-// import LeafMap from './LeafMap'
+import AddRestaurant from './AddRestaurant'
 
 class Restaurant extends React.Component {
   state = {
-    // lat = '2',
-    // lng = '4'
+    // lat: '',
+    // lng: ''
   }
 
+  getState = () => {
+    console.log(this.props.restaurantData)
+  }
 
-  // geoCode = () => {
-  //   this.setState({showMap: false})
-  //   Geocode.setApiKey(process.env.MAP_KEY)
-  //   Geocode.enableDebug()
-  //   fetch(`https://have-you-tried.herokuapp.com/comments/${this.props.account}`)
-  //   .then(response => response.json())
-  //   .then(response => {
-  //     this.setState({mapAddress: response.address})
-  //   })
-  //   // .then(console.log(this.state.mapAddress))
-  //   .then(response => Geocode.fromAddress(this.state.mapAddress)
-  //   .then(
-  //     response => {
-  //       const { lat, lng } = response.results[0].geometry.location
-  //       // console.log(lat, lng)
-  //       this.setState({
-  //         lat: lat,
-  //         lng: lng,
-  //         showMap: true
-  //       })
-  //       // console.log(this.state)
-  //     },
-  //     error => {
-  //       console.error(error)
-  //     }
-  //   )) 
-  // }
-
+  editRestaurant = () => {
+    console.log('click')
+  }
 
   render() {
     return (
@@ -55,10 +32,13 @@ class Restaurant extends React.Component {
               <Card.Header as={NavLink}
           to={`/restaurants/${restaurant.id}`}>{restaurant.restaurant_name}</Card.Header>
             </Card.Content>
+            <a onClick={this.editRestaurant(restaurant)}>Edit</a>
           </Card>
         )
       })}
+      {/* <LeafMap lat={this.state.restaurant[0].lat} lng={this.state.restaurant[0].lng} /> */}
       </Card.Group>
+        <AddRestaurant />
       </div>
     )
   }

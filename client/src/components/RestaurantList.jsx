@@ -19,7 +19,7 @@ class RestaurantList extends Component {
   render() {
     return (
       <React.Fragment>
-        <div>
+        <div id='friend-page'>
           <Restaurant restaurantData={this.state.restaurants}/>
         </div>
       </React.Fragment>

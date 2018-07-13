@@ -8,14 +8,6 @@ class Friend extends React.Component {
 
   }
 
-  postFriend = () => {
-    fetch('http://example.com/movies.json')
-  .then(response => response.json())
-  .then(function(myJson) {
-    console.log(myJson);
-  });
-  }
-
   render() {
     return (
       <React.Fragment>
@@ -31,11 +23,12 @@ class Friend extends React.Component {
               <Card.Header as={NavLink}
           to={`/friends/${friend.id}`}>{friend.friend_name}</Card.Header>
             </Card.Content>
+            <a onClick={this.props.deleteFriend(friend)}>Delete</a>
+            {/* <a onClick={this.props.editFriend(friend)}>Delete</a> */}
           </Card>
         )
       })}
       </Card.Group>
-          <AddFriend></AddFriend>
       </React.Fragment>
     )
   }

@@ -23,3 +23,12 @@ h1 {
   font-family: 'Lobster', cursive;
   text-align: center;
 }
+
+#form {
+  width: 21em;
+}
+
+#friend-page {
+ padding-left: 5em;
+ padding-top: 5em;
+}

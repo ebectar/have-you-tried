@@ -19,7 +19,7 @@ return (
         <Form.Input fluid placeholder='First name' 
         value={this.state.name}
         onChange={this.handleFormChange}/>
-      <Button type='submit' onClick={this.props.handleSubmit}>Add New Friend</Button>
+      <Button type='submit' onClick={this.props.editFriend}>Submit Changes</Button>
     </Form>
   </Segment>
 )}

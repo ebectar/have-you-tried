@@ -3,15 +3,9 @@ import React, {
 } from 'react';
 import {
   Card
-} from "semantic-ui-react";
-// import {NavLink} from 'react-router-dom'
-// import Comment from './Comment'
-import LeafMap from './LeafMap'
+} from "semantic-ui-react"
 const url = "https://have-you-tried.herokuapp.com/"
-const id = window
-  .location
-  .href
-  .split("/")[4]
+const id = window.location.href.split("/")[4]
 
 export default class RestaurantContainer extends Component {
   state = {
@@ -45,16 +39,10 @@ export default class RestaurantContainer extends Component {
 
   render() {
     return (  
-          <div>
+          <div id='friend-page'>
             {this.state.restaurant.map((restaurant, i) => {
             console.log(restaurant)
             return (<React.Fragment key = {i}>
-                {
-                /* <Checkbox
-                          checked={this.state.tried}
-                          onChange={this.updateUserTried}
-                          value={this.state.tried}></Checkbox> */
-              } 
               <br/>
               
               <Card>
@@ -69,7 +57,7 @@ export default class RestaurantContainer extends Component {
           )
         })
       }
-      <LeafMap />
+   {/* <LeafMap lat={this.state.restaurant[0].lat} lng={this.state.restaurant[0].lng} /> */}
       </div>
   );
 }

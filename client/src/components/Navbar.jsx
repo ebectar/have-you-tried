@@ -13,7 +13,7 @@ export default class Navbar extends Component {
     const {activeItem} = this.state
 
     return (
-      <Grid.Column width={4}>
+      <Grid.Column width={4} id='nav'>
         <Menu secondary vertical>
           <Menu.Header as='h1' id='logo'>Have You Tried __?</Menu.Header>
           <Menu.Item
@@ -23,23 +23,6 @@ export default class Navbar extends Component {
             active={activeItem === 'home'}
             onClick={this.handleItemClick}>
             Home
-          </Menu.Item>
-
-          <Menu.Item
-            as={NavLink}
-            to='about'
-            name='about'
-            active={activeItem === 'about'}
-            onClick={this.handleItemClick}>
-            About
-          </Menu.Item>
-          <Menu.Item
-            as={NavLink}
-            to='recommendation'
-            name='recommendation'
-            active={activeItem === 'recommendation'}
-            onClick={this.handleItemClick}>
-            Add a New Recommendation
           </Menu.Item>
           <Menu.Item
             as={NavLink}

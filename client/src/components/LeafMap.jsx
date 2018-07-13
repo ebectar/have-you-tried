@@ -3,8 +3,8 @@ import {Map, Marker, Popup, TileLayer} from 'react-leaflet'
 
 class LeafMap extends React.Component {
   state = {
-    lat: 51.505,
-    lng: -0.09
+    lat: this.props.lat,
+    lng: this.props.lng
   }
 
   render() {

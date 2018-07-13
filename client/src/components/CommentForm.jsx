@@ -1,23 +1,24 @@
 import React from 'react'
-import { Button, Form, TextArea } from 'semantic-ui-react'
-
+import { Button, Form, TextArea, Dropdown } from 'semantic-ui-react'
+import { friendOptions } from './friends'
 class NewComment extends React.Component {
   state = {
     friendName: '',
     restaurant: '',
     comment: '',
+    friendData: []
+  }
+
+  componentDidMount(){
+      fetch('https://have-you-tried.herokuapp.com/comments/')
+        .then(res => res.json())
   }
   
   handleNewComment = (event) => {
       event.preventDefault()
       const url = 'https://have-you-tried.herokuapp.com/comments'
       const postData = {
-        account: this.state.account,
-        supplier_rep: this.state.supplierRep,
-        distributor_rep: this.state.distributorRep,
-        buyer: this.state.buyer,
-        address: `${this.state.streetAddress}, ${this.state.city}, ${this.state.state} ${this.state.zipCode}`,
-        account_type: this.state.accountType
+
       }
       fetch(url, {
         method: 'POST',
@@ -28,15 +29,6 @@ class NewComment extends React.Component {
       })
       .then(response => response.json())
       this.setState({
-        account: '',
-        supplierRep: '',
-        distributorRep: '',
-        buyer: '',
-        streetAddress: '',
-        city: '',
-        state: '',
-        zipCode: '',
-        accountType: ''
       })
   }
 
@@ -45,11 +37,11 @@ class NewComment extends React.Component {
       <Form>
             <Form.Field>
               <label>Friend Who Recommended:</label>
-              <input focus id='signup-email' placeholder='Friend Name' />
+              <Dropdown placeholder='Select Friend' fluid selection options='1'/>
             </Form.Field>
             <Form.Field>
               <label>Restaurant Name:</label>
-              <input focus id='restaurant-name' type='text' placeholder='Location' />
+              <Dropdown placeholder='Select Restaurant' fluid selection options={friendOptions} />
             </Form.Field>
             <Form.Field>
               <label>Comments:</label>
