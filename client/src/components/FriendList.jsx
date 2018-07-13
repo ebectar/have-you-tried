@@ -18,6 +18,12 @@ class FriendList extends Component {
       })
   }
 
+  handleFormChange = event => {
+    this.setState({
+      name: event.target.value
+    })
+  }
+
   handleSubmit = event => {
     console.log(this.state)
     event.preventDefault()
@@ -38,7 +44,7 @@ class FriendList extends Component {
           : this.setState({ error: false })
       })
   }
-  
+
   deleteFriend(friend){
     console.log('clicked')
     console.log(friend)
@@ -74,7 +80,7 @@ editFriend = (event) => {
       <React.Fragment>
         <div id='friend-page'>
           <Friend friendData={this.state.friends} deleteFriend={this.deleteFriend}/>
-          <AddFriend handleSubmit={this.handleSubmit}/>
+          <AddFriend handleSubmit={this.handleSubmit} handleFormChange={this.handleFormChange} name={this.state.name}/>
           <EditFriend editFriend={this.editFriend}/>
         </div>
       </React.Fragment>
