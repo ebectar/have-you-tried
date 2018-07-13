@@ -3,6 +3,8 @@ exports.up = (knex, Promise) => {
 		table.increments('id').primary()
 		table.text('restaurant_name')
 		table.text('location')
+		table.text('lat')
+		table.text('lng')
 		table.boolean('user_tried')
 	})
 }
